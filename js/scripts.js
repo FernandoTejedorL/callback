@@ -1,8 +1,16 @@
-const rootStyles = document.documentElement.style;
+//callback son finciones que son ejecutadas por otra función
 
 const numbers = [1, 2, 4, 7, 8, 9];
 
+numbers.forEach((number, index) => {
+  console.log('NUMBER -', number);
+  console.log('INDEX -', index);
+});
+
+//tendremos que poner siempre nombreArray.método()
+
 //forEach - Recorre el array y aplica la función del callback, pero no devuelve resultado
+// con return, pero si se puede aplicar para hacer un push
 
 numbers.forEach((number) => {
   console.log(number + 3);
@@ -46,16 +54,20 @@ const resultFind = numbers.find((number) => {
 console.log(resultFind);
 
 // sort - recorre cada elemento del array y los selecciona por parejas, hay que meter dos parámetros
+// el sort modifica el array original y te lo deja de acuerdo a las instrucciones dadas
 
 const numbersSort = [1, 3, 6, 4, 9, 7];
 
 const resultSort1 = numbersSort.sort((a, b) => {
   console.log(a - b);
+  console.log(b - a);
   return a - b;
 });
 console.log(resultSort1);
 
 const lettersSort1 = ['a', 'c', 'd', 'b', 'f', 'e'];
+// lettersSort1.sort((a,b) => a.localeCompare(b)); hace la comparación sin necesidad de utilizar cambios a
+//mayúsculas y minúsculas y tildes
 
 const resultSort2 = lettersSort1.sort((a, b) => {
   if (a > b) return 1;
@@ -76,7 +88,10 @@ console.log(result);
 
 //⤴️ es lo mismo que ⤵️
 
-const result2 = numbersReduce.reduce((acc, number) => {
-  return acc + number;
-});
+const result2 = numbersReduce.reduce((acc, number) => acc + number);
 console.log(result2);
+
+const lettersReduce = ['h', 'o', 'l', 'a'];
+
+const word = lettersReduce.reduce((acc, letter) => letter + acc);
+console.log(word);
